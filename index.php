@@ -6,11 +6,18 @@
     <title>Demo Laracasts</title>
 </head>
 <body>
+    <? 
+    $name = "Dark Matter";
+    $read = true;
     
-<h1>
-    <?php 
-        echo "Hello World";
+    if ($read){
+        $message = "You have read $name";
+    }else{
+        $message = "You have NOT read $name";
+    }
     ?>
+<h1>
+    <?= $message;  ?>
 </h1>
 
 </body>
