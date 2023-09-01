@@ -17,39 +17,33 @@ $books = [
         'name' => 'Do Android Dreams of Electric Ship',
         'author'=> 'Philip K. Dick',
         'purchase_url' => 'http://example.com',
-        'year' => '1982'
+        'year' => 1982
     ],
     [
         'name' => "Project Hail Mary",
         'author' => 'Andy Wair',
         'purchase_url' => 'http://example.com',
-        'year' => '2021'
+        'year' => 2021
     ],
     [
         'name' => "The Martian",
         'author' => 'Andy Wair',
         'purchase_url' => 'http://example.com',
-        'year' => '2011'
+        'year' => 2011
     ],
     
 
 ];
 
-function filterByAuthor($books,$author){
-    $filteredBooks = [];
-    foreach ($books as $book) {
-        if($book['author'] == $author){
-            $filteredBooks[] = $book;
-        }
-    }
-    return $filteredBooks;
-}
  
-
+ 
+$filteredBooks = array_filter($books,function($book){
+    return $book['year'] >= 1950 && $book['year'] <=2020;
+});
 ?>
 <ul>
 
-    <? foreach ( filterByAuthor($books,'Andy Wair') as $book): ?>
+    <? foreach ( $filteredBooks as $book): ?>
         <li>
             <a href="<?= $book['purchase_url'] ?>">
                 <?= $book['name'] ?>
