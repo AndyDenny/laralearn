@@ -12,19 +12,34 @@
 
 <?
 $books = [
+    
+    [
+        'name' => 'Do Android Dreams of Electric Ship',
+        'author'=> 'Philip K. Dick',
+        'purchase_url' => 'http://example.com',
+        'year' => '1982'
+    ],
+    [
+        'name' => "Project Hail Mary",
+        'author' => 'Andy Wair',
+        'purchase_url' => 'http://example.com',
+        'year' => '2021'
+    ],
+    
 
-    "Do Android Dreams of Electric Ship",
-    "The Langoliers",
-    "Hail Mary"
 ]
 ?>
-
 <ul>
-    <?
-    foreach($books as $book):?>
-        <li><?=$book;?></li>  
-    <? endforeach;?>
-    
+
+    <? foreach ($books as $book): ?>
+        <li>
+            <a href="<?= $book['purchase_url'] ?>">
+                <?= $book['name'] ?>
+            </a> 
+            (<?= $book['year'] ?> year)
+        </li>
+    <? endforeach; ?>
+
 </ul>
 
 </body>
