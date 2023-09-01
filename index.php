@@ -6,19 +6,26 @@
     <title>Demo Laracasts</title>
 </head>
 <body>
-    <? 
-    $name = "Dark Matter";
-    $read = true;
      
-    if ($read){
-        $message = "You have read $name";
-    }else{
-        $message = "You have NOT read $name";
-    }
-    ?>
-<h1>
-    <?= $message;  ?>
-</h1>
+<h1>Recomended books</h1>
+
+
+<?
+$books = [
+
+    "Do Android Dreams of Electric Ship",
+    "The Langoliers",
+    "Hail Mary"
+]
+?>
+
+<ul>
+    <?
+    foreach($books as $book):?>
+        <li><?=$book;?></li>  
+    <? endforeach;?>
+    
+</ul>
 
 </body>
 </html>
