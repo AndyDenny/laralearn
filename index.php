@@ -1,15 +1,13 @@
 <?php 
  
 require "functions.php";
+require "Database.php";
 
-//require "router.php";
 
-$connct = "mysql:host=localhost;port=3306;dbname=laralearndb;user=root;charset=utf8mb4"; // undrescore sign - return EXSP
-$pdo = new PDO($connct);
-$statement =  $pdo->prepare("select * from posts");
-$statement->execute();
+$db = new Database();
 
-$posts = $statement->fetchAll(PDO::FETCH_ASSOC);
+$posts = $db->query("select * from posts")->fetchAll(PDO::FETCH_ASSOC);
+
 
 foreach ($posts as $post){
     echo "<li>{$post['title']}</li>";
