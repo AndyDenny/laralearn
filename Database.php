@@ -4,10 +4,14 @@ class Database{
 
     public $connection;
 
-    public function __construct()
+    public function __construct($config, $username = 'root', $password = '')
     {
-        $connct = "mysql:host=localhost;port=3306;dbname=laralearndb;user=root;charset=utf8mb4"; // undrescore sign - return EXSP
-        $this->connection = new PDO($connct);
+         
+        $connct = 'mysql:' . http_build_query( $config, '', ';');
+        
+        $this->connection = new PDO($connct, $username, $password,[
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+        ]);
     } 
 
     public function query($query){ 
