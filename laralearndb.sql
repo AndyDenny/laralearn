@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 12, 2023 at 08:58 PM
+-- Generation Time: Sep 13, 2023 at 08:59 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `notes` (
   `id` int NOT NULL,
-  `title` text NOT NULL,
+  `body` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `user_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -37,8 +37,11 @@ CREATE TABLE `notes` (
 -- Dumping data for table `notes`
 --
 
-INSERT INTO `notes` (`id`, `title`, `user_id`) VALUES
-(1, ' PHP is best', 1);
+INSERT INTO `notes` (`id`, `body`, `user_id`) VALUES
+(1, ' PHP is best', 1),
+(2, 'Some another note', 2),
+(3, 'Best ever programmer', 1),
+(4, 'Lorem ipsium bla bla', 2);
 
 -- --------------------------------------------------------
 
@@ -76,7 +79,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`) VALUES
-(1, 'Jonh Doe', 'John@example.com');
+(1, 'Jonh Doe', 'John@example.com'),
+(2, 'Kate Useless', 'Kate@example.com');
 
 --
 -- Indexes for dumped tables
@@ -110,7 +114,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `notes`
 --
 ALTER TABLE `notes`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `posts`
@@ -122,7 +126,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
