@@ -4,20 +4,14 @@
 $config = require ("config.php");
 $db = new Database($config['database']);
 
-$note = $db->query('select * from notes where id = :id ',[
-    'id' => $_GET['id']
-    ])->fetch();
- 
-if (!$note){
-    abort();
-}
-
+$heading = "Note";
 $currentUser = 1;
 
-if($note['user_id'] != $currentUser){
-    abort(Response::FORBIDDEN);
-}
 
-$heading = "Note";
+$note = $db->query('select * from notes where id = :id ',[
+    'id' => $_GET['id']
+    ])->findOrFail();
+
+authorize($note['user_id'] == $currentUser);
 
 require "views/note.view.php";

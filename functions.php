@@ -10,3 +10,11 @@ function dd($value){
 function urlIs($url){
     return $_SERVER['REQUEST_URI'] == $url;
 }
+
+function authorize($condition, $statusCode = Response::FORBIDDEN ){
+
+    if(!$condition){
+        abort($statusCode);
+    }
+    
+}
