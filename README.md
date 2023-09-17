@@ -1,2 +1,2 @@
 # laralearn
-study project from Laracasts YouTube channel
+study project from YouTube channel
