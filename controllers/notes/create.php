@@ -1,15 +1,14 @@
 <?php
 
-require 'Validator.php';
+require base_path('Validator.php');
 
 $config = require('config.php');
 $db = new Database($config['database']);
-
-$heading = "Create Note";
+$errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
-    $errors = []; 
+     
 
     if (Validator::string($_POST['body'],1,1000)){
         $errors['body'] = 'A text contains too many letters, no more than 1000 required.';
@@ -23,5 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
     ]);
    }
 }
-
-require "views/notes/create.view.php";
+ 
+require view("notes/create.view.php",[
+    'heading'=>'Create Note',
+    'errors' => $errors,
+]);
