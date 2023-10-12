@@ -10,8 +10,7 @@ $password = $_POST['password'];
 $errors = [];
 if(!Validator::email($email)){
     $errors['email'] = 'Email not valid';
-}
- 
+} 
 
 if(!Validator::string($password,7,255)){
     $errors['password'] = 'Input password from 7 to 255 characters';
@@ -32,6 +31,7 @@ $user = $db->query('select * from users where email = :email',[
 
 if($user){
     header('location: /');
+    exit();
 }else{
     $db->query('INSERT INTO users(email, password) VALUES (:email, :password)',[
         'email'=>$email,
